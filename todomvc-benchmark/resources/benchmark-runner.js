@@ -150,7 +150,7 @@ BenchmarkState.prototype.next = function () {
 }
 
 BenchmarkState.prototype.isFirstTest = function () {
-    return !this._testIndex;
+    return this._testIndex === 0;
 }
 
 BenchmarkState.prototype.prepareCurrentSuite = function (runner, frame) {
