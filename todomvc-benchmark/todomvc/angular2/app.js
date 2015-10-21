@@ -44,7 +44,8 @@ var TodoApp = (function () {
         this.todoStore.remove(uid);
     };
     TodoApp.prototype.addTodo = function ($event, newtodo) {
-        if ($event.which === ENTER_KEY && newtodo.value.trim().length) {
+//        if ($event.which === ENTER_KEY && newtodo.value.trim().length) {
+          if ($event.which === 13) {
             this.todoStore.add(newtodo.value);
             newtodo.value = '';
         }
