@@ -235,20 +235,20 @@ Suites.push({
     tests: [
         new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
             for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var keydownEvent = document.createEvent('Event');
-                keydownEvent.initEvent('keydown', true, true);
-                keydownEvent.which = 13; // VK_ENTER
+                var keyupEvent = document.createEvent('Event');
+                keyupEvent.initEvent('keyup', true, true);
+                keyupEvent.which = 13;
                 newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(keydownEvent);
+                newTodo.dispatchEvent(keyupEvent);
             }
         }),
         new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var checkboxes = contentDocument.querySelectorAll('.toggle ng-binding');
+            var checkboxes = contentDocument.querySelectorAll('.toggle.ng-binding');
             for (var i = 0; i < checkboxes.length; i++)
                 checkboxes[i].click();
         }),
         new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
-            var deleteButtons = contentDocument.querySelectorAll('.destroy ng-binding');
+            var deleteButtons = contentDocument.querySelectorAll('.destroy.ng-binding');
             for (var i = 0; i < deleteButtons.length; i++)
                 deleteButtons[i].click();
         })
